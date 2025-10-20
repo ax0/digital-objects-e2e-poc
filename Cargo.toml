@@ -1,5 +1,6 @@
 [workspace]
 members = [
+    "app",
     "craftlib",
     "common",
     "ad-server",
@@ -20,14 +21,19 @@ tracing-subscriber = { version = "0.3", features = ["registry", "env-filter" ] }
 # rest api
 warp = "0.3"
 
+# db implementation
+sqlx = { version="0.8.6", features = ["sqlite", "chrono", "runtime-tokio"] }
+
 # serialization
+hex = "0.4.3"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0.143"
+minicbor-serde = { version = "0.6.1", features = ["std"] }
 
 # pod
 pod2 = { git="https://github.com/0xPARC/pod2", rev = "ffed5b4fbda9189d7452824a54978a730cb10964", default-features = false, features = ["backend_plonky2", "disk_cache", "zk"]}
 plonky2 = { git = "https://github.com/0xPARC/plonky2.git", rev = "109d517d09c210ae4c2cee381d3e3fbc04aa3812" }
-pod2_onchain = { git = "https://github.com/0xPARC/pod2-onchain.git", rev = "f547f9e6518f797e2a33567c8498683ccec65b3e", default-features=false, features = ["disk_cache"]}
+pod2_onchain = { git = "https://github.com/0xPARC/pod2-onchain.git", rev = "5f2047752349a0f06665bc8f6ba82f50bc5ad435", default-features=false, features = ["disk_cache"]}
 
 # eth
 alloy = { version = "1.0.13", features = [
